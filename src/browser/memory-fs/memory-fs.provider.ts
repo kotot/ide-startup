@@ -11,15 +11,12 @@ import {
   IDisposable,
   Disposable,
   BinaryBuffer,
-} from '@opensumi/ide-core-common';
-import {
   FileSystemProviderCapabilities,
   FileType,
   FileStat,
-  FileChangeEvent,
-  FileChange as OpenSumiFileChange,
   FileChangeType as OpenSumiFileChangeType,
-} from '@opensumi/ide-file-service';
+} from '@opensumi/ide-core-common';
+import { FileChangeEvent, FileChange as OpenSumiFileChange } from '@opensumi/ide-file-service';
 import { IMemoryFileSystem } from './memory-file-system';
 import { FileChangeType } from '../../common/file-sync';
 

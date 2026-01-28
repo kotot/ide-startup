@@ -5,7 +5,7 @@
 
 import { Injectable, Autowired } from '@opensumi/di';
 import { Domain, ClientAppContribution, URI } from '@opensumi/ide-core-browser';
-import { IFileServiceClient } from '@opensumi/ide-file-service';
+import { IFileServiceClient } from '@opensumi/ide-file-service/lib/browser';
 import { IMemoryFileSystem } from './memory-file-system';
 import { IFileSyncService, FileSyncConfig } from './file-sync.service';
 import { IMemoryFsProvider, MEMORY_FS_SCHEME, MemoryFsProvider } from './memory-fs.provider';

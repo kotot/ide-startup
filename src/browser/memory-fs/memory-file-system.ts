@@ -4,13 +4,16 @@
  */
 
 import { Injectable, Autowired } from '@opensumi/di';
-import { URI, Emitter, Event, IDisposable, Disposable, BinaryBuffer } from '@opensumi/ide-core-common';
 import {
-  FileChangeType as OpenSumiFileChangeType,
+  URI,
+  Emitter,
+  Event,
+  IDisposable,
+  Disposable,
+  BinaryBuffer,
   FileType,
   FileStat,
-  FileSystemProviderCapabilities,
-} from '@opensumi/ide-file-service';
+} from '@opensumi/ide-core-common';
 import { FileChange, FileChangeType, FileNode } from '../../common/file-sync';
 
 /**
@@ -354,11 +357,11 @@ export class MemoryFileSystem implements IMemoryFileSystem {
     return {
       uri: uri.toString(),
       isDirectory: node.isDirectory,
-      isFile: !node.isDirectory,
       isSymbolicLink: false,
       lastModification: node.mtime,
       createTime: node.ctime,
       size: node.content?.length || 0,
+      type: node.isDirectory ? FileType.Directory : FileType.File,
     };
   }
 
