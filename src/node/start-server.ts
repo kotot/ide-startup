@@ -4,6 +4,7 @@ import * as Koa from 'koa';
 import * as koaStatic from 'koa-static';
 import { Deferred } from '@opensumi/ide-core-common';
 import { IServerAppOpts, ServerApp, NodeModule } from '@opensumi/ide-core-node';
+import { createFileSyncMiddlewares } from './file-sync';
 
 export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) {
   const app = new Koa();
@@ -37,6 +38,12 @@ export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) 
       ...opts,
       ...arg1,
     };
+  }
+
+  // 注册文件同步中间件 (需要在 ServerApp 之前注册)
+  const fileSyncMiddlewares = createFileSyncMiddlewares();
+  for (const middleware of fileSyncMiddlewares) {
+    app.use(middleware);
   }
 
   const serverApp = new ServerApp(opts);

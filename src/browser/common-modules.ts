@@ -41,6 +41,7 @@ import { TaskModule } from '@opensumi/ide-task/lib/browser';
 import { TestingModule } from '@opensumi/ide-testing/lib/browser';
 import { AINativeModule } from '@opensumi/ide-ai-native/lib/browser';
 import { DesignModule } from '@opensumi/ide-design/lib/browser';
+import { MemoryFsModule } from './memory-fs';
 
 export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   MainLayoutModule,
@@ -88,6 +89,9 @@ export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   CommentsModule,
   TaskModule,
   TestingModule,
+
+  // Memory file system for local code management
+  MemoryFsModule,
 ];
 
 export const AIModules: ConstructorOf<BrowserModule>[] = [DesignModule, AINativeModule];
